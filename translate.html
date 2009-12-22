@@ -130,9 +130,9 @@
             var url = 'http://translate.google.com/translate_a/t?client=t&otf=1&pc=0';
             url += '&text=' + text;
             url += '&hl=' + options.first.value;
-            if(from != 'auto') {
+            //if(from != 'auto') {
                 url += '&sl=' + from;
-            }
+            //}
             url += '&tl=' + to;
             var xhr = new XMLHttpRequest();
             xhr.open("GET", url, true);
