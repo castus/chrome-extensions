@@ -1,3 +1,5 @@
+1.3.1 (2009-12-24)
+    - fixed: extension wasn't working with Chrome v 4.0.249.43 and early (unexpected allFrames issue)
 1.3.1 (2009-12-22)
     - fixed auto-detection language issue
 1.3 (2009-12-17)

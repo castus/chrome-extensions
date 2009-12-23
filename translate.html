@@ -99,9 +99,16 @@
             var scheme = tab.url.substring(0, 5);
             if(scheme == 'https' || scheme == 'http:') {
                 var theme = "window['-chrome-auto-translate-core-data-theme'] = '" + themes['black'] + branding + "';";
-                chrome.tabs.executeScript(tabId, {code: theme, allFrames: true}, function() {
-                    chrome.tabs.executeScript(tabId, {file: 'script.js', allFrames: true});
-                });
+                try {
+                    chrome.tabs.executeScript(tabId, {code: theme, allFrames: true}, function() {
+                        chrome.tabs.executeScript(tabId, {file: 'script.js', allFrames: true});
+                    });
+                } catch(e) {
+                    // allFrames property doesn't exists in Chrome v 4.0.249.43 and early 
+                    chrome.tabs.executeScript(tabId, {code: theme}, function() {
+                        chrome.tabs.executeScript(tabId, {file: 'script.js'});
+                    });
+                }
             }
         });
 
